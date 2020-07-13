@@ -93,7 +93,7 @@
 			</ul>
 		</nav>
 		<nav>
-				总文章数 4
+				总文章数 5
 		</nav>
 		<nav class="header-smart-menu">
 			
@@ -585,6 +585,377 @@
 
 
   
+    <article id="post-浙大-数据结构-基本概念和线性结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2020/07/13/%E6%B5%99%E5%A4%A7-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/">Markdown笔记</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2020/07/13/%E6%B5%99%E5%A4%A7-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/" class="archive-article-date">
+        <time datetime="2020-07-13T07:55:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-13</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+	
+    <hr>
+<h3 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h3><h4 id="1-抽象数据类型（Abstract-Data-Type）"><a href="#1-抽象数据类型（Abstract-Data-Type）" class="headerlink" title="1.抽象数据类型（Abstract Data Type）"></a>1.抽象数据类型（Abstract Data Type）</h4><h6 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h6><ul>
+<li>数据对象集</li>
+<li>数据集合相关联的操作集</li>
+</ul>
+<h6 id="抽象：描述数据类型的方法不依赖于具体实现"><a href="#抽象：描述数据类型的方法不依赖于具体实现" class="headerlink" title="抽象：描述数据类型的方法不依赖于具体实现"></a>抽象：描述数据类型的方法不依赖于具体实现</h6><ul>
+<li>与存放数据的机器无关</li>
+<li>与数据结构的物理结构无关</li>
+<li>与实现操作的算法和编程语言无关</li>
+</ul>
+<p>Ps：只关心是什么，不关心怎么做到，</p>
+<h4 id="2-算法："><a href="#2-算法：" class="headerlink" title="2.算法："></a>2.算法：</h4><ul>
+<li><p>算法（Algorithm）</p>
+<ul>
+<li>一个有限指令集</li>
+<li>接收一些输入（有些情况下不需要输入）</li>
+<li>产生输出</li>
+<li>一定在有限步骤之后终止（不同于程序，比如操作系统程序一直跑）</li>
+<li>每一条指令<ul>
+<li>有充分明确的目标，不可以有歧义</li>
+<li>计算机能处理的范围之内</li>
+<li>描述应不依赖于任何一种计算机语言以及具体的实现手段</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>什么是好的算法</p>
+<ul>
+<li>空间复杂度S（n）—-根据算法写成的程序在执行时占用存储单元的长度。这个长度往往与输入数据的规模有关。空间复杂度过高的算法可能导致使用的内存超限，造成程序的非正常中断。</li>
+<li>时间复杂度T（n）—-根据算法写成的程序在执行时耗费时间的长度。这个长度往往也与输入数据的规模有关。时间复杂度过高的低效算法可能导致我们在有生之年都等不到运行结果。</li>
+</ul>
+</li>
+<li><p>分析算法效率一般关心下面两种复杂度</p>
+<ul>
+<li>最坏情况复杂度T<del>worst</del>（n）</li>
+<li>平均复杂度T<del>avg</del>（n）</li>
+<li>T<del>avg</del>（n）&lt;=  T<del>worst</del>（n）(分析平均复杂度很难，一般用最坏情况复杂度)</li>
+</ul>
+</li>
+<li><p>复杂度的渐进表示方法</p>
+<ul>
+<li><p>T(n)=O(f(n))表示存在常数C&gt;0,n<del>0</del>&gt;0使得当n&gt;=n<del>0</del>时有T（n）&lt;=C*f（n）上界（一般取最小上界）</p>
+</li>
+<li><p>T(n)=Ω(g(n))表示存在常数C&gt;0,n<del>0</del>&gt;0使得当n&gt;=n<del>0</del>时有T（n）&gt;=C*g（n）下界 （一般取最大下界）</p>
+</li>
+<li><p>$T(n)=\Theta (h(n))$表示同时有T(n)=O(h(o))和T(n)=Ω(h(n)) </p>
+</li>
+</ul>
+</li>
+</ul>
+<p>ps：将n^2^想办法转换为$nlog n$</p>
+<ul>
+<li>若两段算法分别有复杂度$T_1(n)=O(f_1(n))$和$T_2(n)=O(f_2(n))$,则<ul>
+<li>$T_1(n)+T_2(n)=max(O(f_1(n)),O(f_2(n)))$</li>
+<li>$T_1(n)\times T_2(n)=O(f_1(n)\times  f_2(n))$</li>
+</ul>
+</li>
+<li>若T(n)是关于n的k阶多项式，那么$T(n)=\Theta (n^k)$</li>
+<li>一个for循环的时间复杂度等于循环次数乘以循环体代码的复杂度</li>
+<li>if-esle结构的复杂度取决于if的条件判断复杂度和两个分支部分的复杂度，总体复杂度取三者中最大 $\Delta$ </li>
+<li>算法效率高可能有副作用，比如说正确性不是特别明显</li>
+</ul>
+<h3 id="线性结构"><a href="#线性结构" class="headerlink" title="线性结构"></a>线性结构</h3><h4 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h4><h6 id="线性表：由同类型数据元素构成的有序序列的线性结构"><a href="#线性表：由同类型数据元素构成的有序序列的线性结构" class="headerlink" title="线性表：由同类型数据元素构成的有序序列的线性结构"></a>线性表：由同类型数据元素构成的有序序列的线性结构</h6><ul>
+<li>表中元素个数称为线性表的长度</li>
+<li>线性表没有元素时，称为空表</li>
+<li>表起始位置称表头，表结束位置称表尾</li>
+</ul>
+<h6 id="线性表的抽象数据类型描述"><a href="#线性表的抽象数据类型描述" class="headerlink" title="线性表的抽象数据类型描述"></a>线性表的抽象数据类型描述</h6><ul>
+<li>数据名称:线性表（List）</li>
+<li>数据对象集：线性表是n（&gt;=0）个元素构成的有序序列（a<del>1</del>，a<del>2</del>，…a<del>n</del>）</li>
+<li>操作集：线性表L∈List,整数i表示位置，元素X∈ElementType,线性表基本操作主要有:<ul>
+<li>List MakeEmpty():初始化一个空线性表L;</li>
+<li>ElementType FindKth( int K, ListL):根据位序K，返回相应元素;</li>
+<li>int Find( ElementType X, ListL ):在线性表L中查找X的第一次出现位置;</li>
+<li>4、void Insert( ElementType X, int i, List L):在位序i前插入-一个新元素X;</li>
+<li>5、void Delete( int i, ListL ):删除指定位序i的元素: </li>
+<li>6、int Length( ListL ):返回线性表L的长度n.</li>
+</ul>
+</li>
+</ul>
+<p><strong><em>线性表的存储</em></strong></p>
+<p>顺序存储实现：利用数组的连续存储空间存放线性表的各元素</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">List</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">ElementType Data[MAXSIZE];</span><br><span class="line"><span class="keyword">int</span> Last;<span class="comment">//最后一个元素所在的位置</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> <span class="title">L</span>;</span></span><br><span class="line">List PtrL;</span><br><span class="line">L.Data[i]或Ptrl-&gt;Data[i]<span class="comment">//访问下标为i的元素</span></span><br><span class="line">L.Last+<span class="number">1</span>或PtrL-&gt;Last+<span class="number">1</span><span class="comment">//线性表的长度</span></span><br></pre></td></tr></table></figure>
+
+<p>1.初始化（建立空的顺序表）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List <span class="title">MakeEmpty</span><span class="params">( )</span></span></span><br><span class="line"><span class="function">List PtrL</span>;</span><br><span class="line">PtrL = (List ) <span class="built_in">malloc</span>( <span class="keyword">sizeof</span> (struct LNode) ) ;</span><br><span class="line">PtrL- &gt;Last = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">return</span> PtrL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>2.查找</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*平均比较次数（n+1）/2,平均性能O（n）*/</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Find</span><span class="params">( ElementType X，List PtrL )</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> i</span>=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span>( i &lt;= PtrL-&gt;Last &amp;&amp; PtrL- &gt;Data[i]!= X )</span><br><span class="line">i++;</span><br><span class="line"><span class="keyword">if</span> (i &gt; PtrL-&gt;Last) <span class="keyword">return</span> <span class="number">-1</span>; <span class="comment">/*如果没找到，返回-1 */</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> i;<span class="comment">/*找到后返回的是存储位置*/</span></span><br></pre></td></tr></table></figure>
+
+<p>3.插入（第$i(l\leq i\leq n+1)$个位置上插入一个值为X的新元素）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Insert</span><span class="params">( ElementType X, <span class="keyword">int</span> i, List PtrL )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> j;</span><br><span class="line"><span class="keyword">if</span>( PtrL-&gt;Last == MAXSIZE<span class="number">-1</span> )&#123;<span class="comment">/*表空间已满，不能插入*/</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"表满"</span> );</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span>(i&lt;<span class="number">1</span>||i&gt; PtrL-&gt;Last+<span class="number">2</span>) &#123;<span class="comment">/*检查插入位置的合法性*/</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"位置不合法"</span> );</span><br><span class="line"><span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(j= PtrL-&gt;Last; j&gt;= i<span class="number">-1</span>;j--)</span><br><span class="line">PtrL-&gt;Data[j+<span class="number">1</span>] = PtrL-&gt;Data[j]; <span class="comment">/*将 ai- an倒序向后移动*/</span></span><br><span class="line">PtrL-&gt;Data[i<span class="number">-1</span>] = X;<span class="comment">/*新元素插入*/</span></span><br><span class="line">PtrL-&gt;Last++;<span class="comment">/*Last仍指向最后元素*/</span></span><br><span class="line"><span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+
+<p>4.删除（删除表第i(l&lt;=i&lt;=n)个位置上的元素）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*平均移动次数（n-1）/2,O(n)*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">( <span class="keyword">int</span> i, List PtrL )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="keyword">int</span> j;</span><br><span class="line"><span class="keyword">if</span>(i&lt;<span class="number">1</span> ||i&gt; PtrL-&gt;Last+<span class="number">1</span> ) &#123;<span class="comment">/*检查空表及删除位置的合法性*/</span></span><br><span class="line"><span class="built_in">printf</span> (“不存在第%d个元素”, i);</span><br><span class="line"><span class="keyword">return</span> ;</span><br><span class="line"><span class="keyword">for</span>(j=i;j&lt;= PtrL&gt;Last; j++ )</span><br><span class="line">PtrL-&gt;Data[j<span class="number">-1</span>] = PtrL-&gt;Data[j];<span class="comment">/*将 ai+1~ an顺序向前移动*/</span></span><br><span class="line">PtrL-&gt;Last--;<span class="comment">/*Last仍指向最后元素*/</span></span><br><span class="line"><span class="keyword">return</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>线性表的链式存储实现</p>
+<p>不要求逻辑上相邻的两个元素物理上也相邻；通过“链”建立起数据元素之间的逻辑关系</p>
+<ul>
+<li>插入、删除 不需要移动数据元素，只需要修改“链”。</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">LNode</span> *<span class="title">List</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">LNode</span>&#123;</span></span><br><span class="line">ElementType Data;</span><br><span class="line">List Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Lnode</span> <span class="title">L</span>;</span></span><br><span class="line">List PtrL;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>主要操作的实现</p>
+<ul>
+<li>1.求表长</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//时间性能为O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Length</span> <span class="params">( List PtrL )</span></span></span><br><span class="line"><span class="function"></span>&#123; List p= PtrL;</span><br><span class="line"><span class="comment">/* p指向表的第-一个结点*/</span></span><br><span class="line"><span class="keyword">int</span> j= <span class="number">0</span>;</span><br><span class="line"><span class="keyword">while</span> (p)&#123;</span><br><span class="line">p= p-&gt;Next;</span><br><span class="line">j++;<span class="comment">/*当前p指向的是第j个结点*/</span> </span><br><span class="line"><span class="keyword">return</span> j;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>2.查找</p>
+<ul>
+<li><p>(1).按序号查找：FindKth；</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List <span class="title">FindKth</span><span class="params">( <span class="keyword">int</span> K, List PtrL )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">List p= PtrL;</span><br><span class="line"><span class="keyword">int</span> i= <span class="number">1</span>;</span><br><span class="line"><span class="keyword">while</span> (p !=<span class="literal">NULL</span> &amp;&amp;i&lt; K)&#123;</span><br><span class="line">p = p-&gt;Next;</span><br><span class="line">i++;</span><br><span class="line"><span class="keyword">if</span>(i== K) <span class="keyword">return</span> p;<span class="comment">/*找到第K个，返回指针*/</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">NULL</span>;<span class="comment">/*否则返回空*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>（2).按值查找：Find</p>
+ <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">List <span class="title">Find</span><span class="params">( ElementType X, List</span></span></span><br><span class="line"><span class="function"><span class="params">PtrL )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">List p= PtrL;</span><br><span class="line"><span class="keyword">while</span> ( p!=<span class="literal">NULL</span> &amp;&amp; p-&gt;Data != X )</span><br><span class="line">p= p-&gt;Next;</span><br><span class="line"><span class="keyword">return</span> p;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>3.插入（在第i-1(1&lt;=i&lt;=n+1)个结点后插入一个值为X的新结点）</p>
+<ul>
+<li>（1）先构造一个新结点，用s指向；</li>
+<li>（2）再找到链表的第i-1个结点，用p指向</li>
+<li>（3）然后修改指针，插入结点（p之后插入新结点是s）</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//平均时间复杂性，O(n/2)</span></span><br><span class="line"><span class="function">List <span class="title">Insert</span><span class="params">( ElementType X, <span class="keyword">int</span> i, List PtrL )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">List p, s;</span><br><span class="line"><span class="keyword">if</span>(i==<span class="number">1</span>)&#123;<span class="comment">/*新结点插入在表头*/</span></span><br><span class="line">s = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct LNode)); <span class="comment">/*申请、 填装结点*/</span></span><br><span class="line">s-&gt;Data = X;</span><br><span class="line">s-&gt;Next= PtrL; .</span><br><span class="line"><span class="keyword">return</span> s;<span class="comment">/*返回新表头指针*/</span></span><br><span class="line">&#125;</span><br><span class="line">p = FindKth( i<span class="number">-1</span>, PtrL );<span class="comment">/*查找第i-1个结点*/</span></span><br><span class="line"><span class="keyword">if</span>(p== <span class="literal">NULL</span>)&#123;<span class="comment">/*第i-1个不存在，不能插入*/</span> </span><br><span class="line"><span class="built_in">printf</span>( <span class="string">"参数i错"</span> );</span><br><span class="line"><span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">s = (List)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct LNode);<span class="comment">/*申请、填装结点*/</span></span><br><span class="line">s-&gt;Data= X;</span><br><span class="line">s-&gt;Next = p-&gt;Next;</span><br><span class="line"><span class="comment">/*新结点插入在第i-1个结点的后面*/</span></span><br><span class="line">p-&gt;Next= S;</span><br><span class="line"><span class="keyword">return</span> PtrL;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>4.删除（删除链表的第i（l&lt;=i&lt;=n）个位置上的结点）</p>
+<ul>
+<li>（1）先找到链表的第i-1个结点，用p指向；</li>
+<li>（2）再用指针s指向要被删除的结点（p的下一个结点）</li>
+<li>（3）然后修改指针，删除s所指结点</li>
+<li>（4）最后释放s所指结点的空间</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//平均时间复杂性 O(n/2)</span></span><br><span class="line"><span class="function">List <span class="title">Delete</span><span class="params">( <span class="keyword">int</span> i, List PtrL )</span></span></span><br><span class="line"><span class="function"></span>&#123; List p, s;</span><br><span class="line"><span class="keyword">if</span>(i==<span class="number">1</span>)&#123;<span class="comment">/*若要删除的是表的第一个结点*/</span></span><br><span class="line">s= PtrL;<span class="comment">/*s指向第1个结点*/</span></span><br><span class="line"><span class="keyword">if</span> (PtrL!=<span class="literal">NULL</span>) PtrL = PtrL-&gt;Next;<span class="comment">/*从链表中删除*/</span></span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line"><span class="built_in">free</span>(s);<span class="comment">/*释放被删除结点*/</span></span><br><span class="line"><span class="keyword">return</span> PtrL; .</span><br><span class="line">&#125;</span><br><span class="line">p = FindKth( i<span class="number">-1</span>, PtrL );<span class="comment">/*查找第i-1个结点*/</span></span><br><span class="line"><span class="keyword">if</span>(p== <span class="literal">NULL</span>)&#123;</span><br><span class="line"><span class="built_in">printf</span>(“第%d个结点不存在”，i<span class="number">-1</span>); <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span>( p-&gt;Next == <span class="literal">NULL</span> )&#123;</span><br><span class="line"><span class="built_in">printf</span>(“第%d个结点不存在”, i);</span><br><span class="line"><span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">s = p-&gt;Next;<span class="comment">/*s指向第i个结点*/</span></span><br><span class="line">p-&gt;Next= s-&gt;Next;<span class="comment">/*从链表中删除*/</span></span><br><span class="line"><span class="built_in">free</span>(s);<span class="comment">/*释放被删除结点*/</span></span><br><span class="line"><span class="keyword">return</span> PtrL;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<p>广义表</p>
+<ul>
+<li>广义表是线性表的推广</li>
+<li>对于线性表而言，n个元素都是基本的单元素</li>
+<li>广义表中，这些元素不仅可以是单元素也可以是另一个广义表</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">GNode</span> *<span class="title">GList</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">GNode</span>&#123;</span></span><br><span class="line"><span class="keyword">int</span> Tag;<span class="comment">/*标志域: 0表示结点是单元素，1表示结点是广义表*/</span></span><br><span class="line"><span class="keyword">union</span> &#123;<span class="comment">/*子表指针域Sublist与单元素数据域Data复用，即共用存储空间*/</span></span><br><span class="line">ElementType Data;</span><br><span class="line">GList SubList;</span><br><span class="line">&#125; URegion;</span><br><span class="line">GList Next;<span class="comment">/*指向后继结点*/</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>多重链表</p>
+<ul>
+<li>多重链表<ul>
+<li>多重链表中结点的指针域会有多个，如前面例子包含了Next和SubList两个指针域；</li>
+<li>但包含两个指针域的链表并不一定是多重链表，比如在双向链表不是多重链表</li>
+<li>例如：十字链表（存储矩阵）</li>
+</ul>
+</li>
+<li>多重链表有广泛的用途：基本上如树，图这样相对复杂的数据结构都可以采用多重链表方式实现存储</li>
+</ul>
+<h4 id="堆栈"><a href="#堆栈" class="headerlink" title="堆栈"></a>堆栈</h4><ul>
+<li><p>堆栈的抽象数据类型描述</p>
+<ul>
+<li>堆栈（Stack）：具有一定操作约束的线性表</li>
+<li>只在一端（栈顶，Top）做插入、删除<ul>
+<li>插入数据：入栈（Push）</li>
+<li>删除数据：出栈（Pop）</li>
+<li>后入先出：Last In First Out（LIFO）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>类型名称:堆栈(Stack)</p>
+</li>
+<li><p>数据对象集: 一个有0个或多个元素的有穷线性表。</p>
+</li>
+<li><p>操作集:长度为MaxSize的堆栈S ∈Stack,堆栈元素item∈ElementType</p>
+<ul>
+<li><p>1、Stack CreateStack( int MaxSize ): 生成空堆栈，其最大长度</p>
+<p>为MaxSize;</p>
+</li>
+<li><p>2、int IsFull( Stack S, int MaxSize ):判断堆栈S是否已满;</p>
+</li>
+<li><p>3、void Push( Stack s, ElementType item ):将元素item压入堆栈;</p>
+</li>
+<li><p>4、int IsEmpty ( StackS); 判断堆栈S是否为空;</p>
+</li>
+<li><p>5、ElementType Pop( StackS):删除并返回栈顶元素;</p>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="栈的顺序存储实现"><a href="#栈的顺序存储实现" class="headerlink" title="栈的顺序存储实现"></a>栈的顺序存储实现</h5><ul>
+<li>栈的顺序存储结构通常由一个一维数组和一个记录栈顶元素位置的变量组成</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize <span class="meta-string">&lt;储存 数据元素的最大个数&gt;</span></span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span>&#123;</span></span><br><span class="line">ElementType Data[MaxSize];</span><br><span class="line"><span class="keyword">int</span> Top;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>(1)入栈</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">( Stack PtrS,ElementType item)</span></span></span><br><span class="line"><span class="function"><span class="title">if</span> <span class="params">( PtrS-&gt;Top == MaxSize<span class="number">-1</span> )</span> </span>&#123;</span><br><span class="line"><span class="built_in">printf</span>(“堆栈满”): <span class="keyword">return</span>:</span><br><span class="line">&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">PtrS-&gt;Data[++(PtrS- &gt;Top)] = item;</span><br><span class="line"><span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>(2)出栈</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">( Stack PtrS )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(PtrS-&gt;Top==<span class="number">-1</span> )&#123;</span><br><span class="line"><span class="built_in">printf</span>(“堆栈空<span class="string">");</span></span><br><span class="line"><span class="string">return ERROR;/* ERROR是ElementType的特殊值，标志错误*/</span></span><br><span class="line"><span class="string">&#125; else</span></span><br><span class="line"><span class="string">return ( PtrS-&gt;Data[(PtrS-&gt; Top)--]);</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>[例]请用一个数组实现两个堆栈，要求最大地利用数组空间，使<br>数组只要有空间入栈操作就可以成功。</p>
+</li>
+<li><p>[分析]一种比较聪明的方法是使这两个栈分别从数组的两头开始<br>向中间生长;当两个栈的栈项指针相遇时，表示两个栈都满了。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize <span class="meta-string">&lt;存储数据元素的最大个数&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">DStack</span> &#123;</span></span><br><span class="line">ElementType Data[MaxSize];</span><br><span class="line"><span class="keyword">int</span> Top1; <span class="comment">/* 堆栈1的栈项指针*/</span></span><br><span class="line"><span class="keyword">int</span> Top2;</span><br><span class="line"><span class="comment">/* 堆栈2的栈项指针*/</span></span><br><span class="line">&#125;S;</span><br><span class="line">S.Top1 = <span class="number">-1</span>;</span><br><span class="line">S.Top2 = MaxSize;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span><span class="params">( struct DStack *PtrS, ElementType item, <span class="keyword">int</span> Tag )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* Tag作为区分两个堆栈的标志，取值为1和2 */</span></span><br><span class="line"><span class="keyword">if</span> ( PtrS-&gt;Top2 - PtrS-&gt;Top1 == <span class="number">1</span>) &#123; <span class="comment">/*堆栈满*/</span></span><br><span class="line"><span class="built_in">printf</span> (<span class="string">"堆栈满"</span>) ;<span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> ( Tag == <span class="number">1</span> )<span class="comment">/*对第一个堆栈操作*/</span></span><br><span class="line">PtrS-&gt;Data [++ (PtrS-&gt;Top1)] = item; </span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="comment">/*对第二个堆栈操作*/</span></span><br><span class="line">PtrS-&gt;Data[--(PtrS-&gt;Top2)] = item; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">( struct DStack *PtrS, <span class="keyword">int</span> Tag )</span> </span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* Tag作为区分两个堆栈的标志，取值为1和2 */</span></span><br><span class="line"><span class="keyword">if</span>( Tag==<span class="number">1</span>)&#123; <span class="comment">/*对第一个堆栈操作 */</span></span><br><span class="line"><span class="keyword">if</span> ( Ptrs-&gt;Top1 == <span class="number">-1</span> ) &#123; <span class="comment">/*堆栈1空*/</span></span><br><span class="line"><span class="built_in">printf</span> (“堆栈<span class="number">1</span>空<span class="string">") ;</span></span><br><span class="line"><span class="string">return NULL;</span></span><br><span class="line"><span class="string">&#125; else return PtrS-&gt;Data [ (PtrS-&gt;Top1)--] ;</span></span><br><span class="line"><span class="string">&#125; else &#123; /*对第二个堆栈操作*/</span></span><br><span class="line"><span class="string">if ( PtrS-&gt;Top2 == MaxSize ) &#123; /*堆栈2空*/</span></span><br><span class="line"><span class="string">printf (“堆栈2空"</span>) ; <span class="keyword">return</span> NUlL;</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">return</span> PtrS-&gt;Data[ (PtrS-&gt;Top2)++] ; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h5 id="堆栈的链式存储实现"><a href="#堆栈的链式存储实现" class="headerlink" title="堆栈的链式存储实现"></a>堆栈的链式存储实现</h5><p>栈的链式存储结构实际上就是一个单链表，叫做链栈。插入和删除操作只能在链栈的栈顶进行。</p>
+<p><em>ps：链尾不能做Top，链头才会做Top</em></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Stack</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span>&#123;</span></span><br><span class="line">ElementType Data;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">Next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">Stack <span class="title">CreateStack</span> <span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/*构建一个堆栈的头结点，返回指针*/</span></span><br><span class="line">Stack S;</span><br><span class="line">S = (Stack) <span class="built_in">malloc</span> (<span class="keyword">sizeof</span> (struct SNode) )</span><br><span class="line">S-&gt;Next = <span class="literal">NULL</span>;</span><br><span class="line"><span class="keyword">return</span> S ;</span><br><span class="line">    </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">IsEmpty</span> <span class="params">(Stack S)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/*判断堆栈s是否为空，若为空函数返回整数1,则返回0 */</span></span><br><span class="line"><span class="keyword">return</span> ( S-&gt;Next == <span class="literal">NULL</span> ) ;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Push</span> <span class="params">( ElementType item, Stack S)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/*将元素item压入堆栈S */</span></span><br><span class="line"><span class="comment">//S是堆栈的头结点，链表实现不存在满的情况</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">TmpCell</span> ;</span></span><br><span class="line">TmpCell= (struct SNode *)<span class="built_in">malloc</span> (<span class="keyword">sizeof</span> (struct SNode)) ;</span><br><span class="line">TmpCell-&gt;Element = item;</span><br><span class="line">TmpCell-&gt;Next = S-&gt;Next;</span><br><span class="line">s-&gt;Next = TmpCell;</span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="function">ElementType <span class="title">Pop</span> <span class="params">(Stack S)</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/*删除并返回堆栈s的栈项元素*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> *<span class="title">FirstCell</span> ;</span></span><br><span class="line">ElementType TopElem ;</span><br><span class="line"><span class="keyword">if</span>( IsEmpty( S ) ) &#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"堆找空”) ; return NULL;</span></span><br><span class="line"><span class="string">&#125; else &#123;</span></span><br><span class="line"><span class="string">FirstCell = S-&gt;Next;</span></span><br><span class="line"><span class="string">S-&gt;Next = FirstCell-&gt;Next;</span></span><br><span class="line"><span class="string">TopElem = FirstCell -&gt;Element ;</span></span><br><span class="line"><span class="string">free (FirstCell) ;</span></span><br><span class="line"><span class="string">re turn TopElem ;</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="中缀表达式转换为后缀表达式"><a href="#中缀表达式转换为后缀表达式" class="headerlink" title="中缀表达式转换为后缀表达式"></a>中缀表达式转换为后缀表达式</h5><p>➢从头到尾读取中缀表达式的每个对象，对不同对象按不同的情况处理。<br>①运算数:直接输出;<br>②左括号:压入堆栈;<br>③右括号:将栈项的运算符弹出并输出，直到遇到左括号(出栈，不输出) ;<br>④运算符:</p>
+<ul>
+<li>若优先级大于栈顶运算符时， 则把它压栈;</li>
+<li>若优先级小于等于栈项运算符时，将栈项运算符弹出并输出;再比<br>较新的栈项运算符，直到该运算符大于栈顶运算符优先级为止，然<br>后将该运算符压栈;</li>
+</ul>
+<p>⑤若各对象处理完毕，则把堆栈中存留的运算符一并输出。</p>
+<h5 id="堆栈的其他应用"><a href="#堆栈的其他应用" class="headerlink" title="堆栈的其他应用"></a>堆栈的其他应用</h5><ul>
+<li>函数调用及递归实现</li>
+<li>深度优先搜索</li>
+<li>回溯算法</li>
+<li>…</li>
+</ul>
+<h4 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h4><h5 id="队列：具有一定操作约束的线性表"><a href="#队列：具有一定操作约束的线性表" class="headerlink" title="队列：具有一定操作约束的线性表"></a>队列：具有一定操作约束的线性表</h5><ul>
+<li>插入和删除操作：只能在一端插入，而在另一端删除<ul>
+<li>数据插入：入队列（AddQ）</li>
+<li>数据删除：出队列（DeleteQ）</li>
+<li>先来先服务</li>
+<li>先进先出：FIFO</li>
+</ul>
+</li>
+</ul>
+<h5 id="队列的抽象数据类型描述"><a href="#队列的抽象数据类型描述" class="headerlink" title="队列的抽象数据类型描述"></a>队列的抽象数据类型描述</h5><ul>
+<li>类型名称：队列（Queue）</li>
+<li>数据对象集：一个有0个或多个元素的有穷线性表</li>
+<li>操作集：长度为MaxSize的队列Q∈Queque，队列元素item∈ElementType<ul>
+<li>1、Queue CreatQueue( int MaxSize ): 生成长度为MaxSize的空队列;</li>
+<li>2、int IsFulIQ( Queue Q, int MaxSize ): 判断队列Q是否已满;</li>
+<li>3、void AddQ( Queue Q, ElementType item): 将数据元素item插入队列Q中;</li>
+<li>4、int IsEmptyQ( Queue Q): 判断队列Q是否为空;</li>
+<li>5、ElementType DeleteQ( Queue Q):将队头数据元素从队列中删除并返回。</li>
+</ul>
+</li>
+</ul>
+<h5 id="队列的顺序存储实现"><a href="#队列的顺序存储实现" class="headerlink" title="队列的顺序存储实现"></a>队列的顺序存储实现</h5><p>队列顺序存储结构通常由一个一维数组和一个记录队列头元素位置的变量front以及一个记录队列尾元素位置的变量rear组成</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MaxSize <span class="meta-string">&lt;储存数据元素的最大个数&gt;</span></span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> &#123;</span></span><br><span class="line">ElementType Data[ MaxSize ];</span><br><span class="line"><span class="keyword">int</span> rear;</span><br><span class="line"><span class="keyword">int</span> front;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">Queue</span>;</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="顺环队列"><a href="#顺环队列" class="headerlink" title="顺环队列"></a>顺环队列</h5><p><img src="https://cdn.jsdelivr.net/gh/iyeee/ImgHosting/img/20200713143422.png" alt></p>
+<p>无法区分空和满（rear和front相等无法区分空和满，）</p>
+<ul>
+<li>（1）使用额外标记，Size或者tag域（记录最后一次操作是插入还是删除，以此区分空还是满）</li>
+<li>（2）仅使用n-1个数组空间(一般采用这个)</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//(1)入队列</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">AddQ</span><span class="params">( Queue PtrQ, ElementType item)</span></span></span><br><span class="line"><span class="function"><span class="title">if</span> <span class="params">( (PtrQ-&gt;rear+<span class="number">1</span>) % MaxSize == PtrQ-&gt;front )</span> </span>&#123;</span><br><span class="line"><span class="built_in">printf</span>(“队列满<span class="string">");</span></span><br><span class="line"><span class="string">return;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">PtrQ-&gt;rear = (PtrQ-&gt;rear+1)% MaxSize;</span></span><br><span class="line"><span class="string">PtrQ-&gt;Data[PtrQ-&gt;rear] = item;</span></span><br><span class="line"><span class="string">       </span></span><br><span class="line"><span class="string">//(2)出队列</span></span><br><span class="line"><span class="string">ElementType DeleteQ ( Queue PtrQ )</span></span><br><span class="line"><span class="string">&#123;</span></span><br><span class="line"><span class="string">if ( PtrQ-&gt;front == PtrQ-&gt;rear)&#123;</span></span><br><span class="line"><span class="string">printf(“队列空"</span>);</span><br><span class="line"><span class="keyword">return</span> ERROR;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">PtrQ-&gt;front = (PtrQ-&gt;front+<span class="number">1</span>)% MaxSize;<span class="comment">//front指向队列头的前一个</span></span><br><span class="line"><span class="keyword">return</span> PtrQ-&gt;Data[PtrQ-&gt;front];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="队列的链式存储实现"><a href="#队列的链式存储实现" class="headerlink" title="队列的链式存储实现"></a>队列的链式存储实现</h5><p>队列的链式存储结构也可以用一个单链表实现。插入和删除操作分别在链表的两头进行：队列指针front（出队操作）和rear（进行插入操作）应该分别指向链表的头和尾（链表的末尾进行删除操作不行，链表的头进行插入和删除都可以）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">ElementType Data;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">Next</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QNode</span>&#123;</span><span class="comment">/*链队列结构*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">rear</span>;</span><span class="comment">/*指向队尾结点*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">front</span>;</span> <span class="comment">/* 指向队头结点*/</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">Queue</span>;</span></span><br><span class="line">Queue PtrQ;</span><br><span class="line"></span><br><span class="line"><span class="comment">//不带头结点的链表队列出队操作的一个示例</span></span><br><span class="line"><span class="function">ElementType <span class="title">DeleteQ</span> <span class="params">( Queue PtrQ )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> *<span class="title">FrontCell</span>;</span></span><br><span class="line">ElementType FrontElem;</span><br><span class="line"><span class="keyword">if</span> ( PtrQ-&gt;front == <span class="literal">NULL</span>) &#123;</span><br><span class="line"><span class="built_in">printf</span>(“队列空<span class="string">"); return ERROR;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">FrontCell = PtrQ-&gt;front;</span></span><br><span class="line"><span class="string">if ( PtrQ-&gt;front == PtrQ-&gt;rear) /* 若队列只有一个元素*/</span></span><br><span class="line"><span class="string">PtrQ-&gt;front = PtrQ-&gt;rear= NULL; /* 删除后队列置为空*/</span></span><br><span class="line"><span class="string">else</span></span><br><span class="line"><span class="string">PtrQ-&gt;front = PtrQ-&gt;front-&gt;Next;</span></span><br><span class="line"><span class="string">FrontElem = FrontCell-&gt;Data;</span></span><br><span class="line"><span class="string">free( FrontCell );/*释放被删除结点空间*/</span></span><br><span class="line"><span class="string">return FrontElem;</span></span><br></pre></td></tr></table></figure>
+
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">notes</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Data Structure</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Data-Structure//" class="article-tag-list-link color5">Data Structure</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2020/07/13/%E6%B5%99%E5%A4%A7-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E5%92%8C%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Markdown笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1016,7 +1387,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1024,7 +1395,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Data Structure</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
